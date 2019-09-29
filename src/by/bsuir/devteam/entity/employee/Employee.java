@@ -1,12 +1,11 @@
-package by.bsuir.employees;
+package by.bsuir.devteam.entity.employee;
 
-public class Employee implements java.io.Serializable{
+import by.bsuir.devteam.entity.Entity;
+
+public abstract class Employee extends Entity{
+
     private String name;
     private String surname;
-
-    public Employee(){
-
-    }
 
     public String getName(){
         return this.name;
