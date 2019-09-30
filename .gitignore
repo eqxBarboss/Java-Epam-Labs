@@ -1,4 +1,7 @@
 .DS_STORE
 out/
+targer/
 .idea/
 *.iml
+src/test/
+target/
