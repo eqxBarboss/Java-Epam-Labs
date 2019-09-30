@@ -16,8 +16,10 @@ public class Developers implements CRUD<Developer>, java.io.Serializable{
     }
 
     @Override
-    public List<Developer> get() {
-        return developers;
+    public String getAll() {
+        return developers.stream()
+                .map(Developer::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 
     @Override

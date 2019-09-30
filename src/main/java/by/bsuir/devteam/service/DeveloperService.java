@@ -27,7 +27,7 @@ public class DeveloperService {
         developers.update(id, developer);
     }
 
-    public List<Developer> getDevelopers(){
-        return developers.get();
+    public String getAllDevelopers(){
+        return developers.getAll();
     }
 }

@@ -16,8 +16,10 @@ public class Testers implements CRUD<Tester>, java.io.Serializable{
     }
 
     @Override
-    public List<Tester> get() {
-        return testers;
+    public String getAll() {
+        return testers.stream()
+                .map(Tester::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 
     @Override

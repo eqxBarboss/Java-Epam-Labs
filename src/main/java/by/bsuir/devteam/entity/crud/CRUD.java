@@ -11,7 +11,7 @@ public interface CRUD<T> {
 
     Optional<T> getByName(String name);
 
-    List<T> get();
+    String getAll();
 
     void update(int id , T entity);
 

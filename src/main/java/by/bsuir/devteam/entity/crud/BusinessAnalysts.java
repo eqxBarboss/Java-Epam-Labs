@@ -16,8 +16,10 @@ public class BusinessAnalysts implements CRUD<BusinessAnalyst>, java.io.Serializ
     }
 
     @Override
-    public List<BusinessAnalyst> get() {
-        return businessAnalysts;
+    public String getAll() {
+        return businessAnalysts.stream()
+                .map(BusinessAnalyst::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 
     @Override
