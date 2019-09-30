@@ -13,9 +13,8 @@ public class Developer extends Employee {
     }
 
     @Override
-    public void printSelf() {
-        super.printSelf();
-
-        System.out.println("Favorite game: " + favoriteGame);
+    public String toString() {
+        return super.toString() + System.lineSeparator() +
+                "Favorite gane: " + favoriteGame;
     }
 }

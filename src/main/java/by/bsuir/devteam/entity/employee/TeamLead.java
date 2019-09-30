@@ -13,9 +13,8 @@ public class TeamLead extends Developer {
     }
 
     @Override
-    public void printSelf() {
-        super.printSelf();
-
-        System.out.println("Motto: " + motto);
+    public String toString() {
+        return super.toString() + System.lineSeparator() +
+                "Motto: " + motto;
     }
 }

@@ -19,6 +19,6 @@ public class DisplayDeveloperById implements Command {
 
         Optional<Developer> developer = developerService.getDeveloperById(id);
 
-        developer.ifPresent(Developer::printSelf);
+        developer.ifPresent(System.out::println);
     }
 }

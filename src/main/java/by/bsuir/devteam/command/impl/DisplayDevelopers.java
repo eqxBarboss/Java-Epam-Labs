@@ -12,6 +12,6 @@ public class DisplayDevelopers implements Command {
         DeveloperService developerService = new DeveloperService();
 
         developerService.getDevelopers()
-                .forEach(Developer::printSelf);
+                .forEach(System.out::println);
     }
 }

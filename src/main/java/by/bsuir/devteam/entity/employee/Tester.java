@@ -13,9 +13,8 @@ public class Tester extends Employee {
     }
 
     @Override
-    public void printSelf() {
-        super.printSelf();
-
-        System.out.println("Tests written: " + testWritten);
+    public String toString() {
+        return super.toString() + System.lineSeparator() +
+                "Tests written: " + testWritten;
     }
 }

@@ -32,12 +32,11 @@ public abstract class Employee extends Entity{
         this.phoneNumber = phoneNumber;
     }
 
-    public void printSelf(){
-
-        super.printSelf();
-
-        System.out.println("Name: " + name);
-        System.out.println("Surname: " + surname);
-        System.out.println("Phone number: " + phoneNumber);
+    @Override
+    public String toString() {
+        return super.toString() + System.lineSeparator() +
+                "Name: " + name + System.lineSeparator() +
+                "Surname: " + surname + System.lineSeparator() +
+                "Phone number: " + phoneNumber;
     }
 }

@@ -13,9 +13,8 @@ public class BusinessAnalyst extends Employee {
     }
 
     @Override
-    public void printSelf() {
-        super.printSelf();
-
-        System.out.println("Nickname: " + nickName);
+    public String toString() {
+        return super.toString() + System.lineSeparator() +
+                "Nickname: " + nickName;
     }
 }

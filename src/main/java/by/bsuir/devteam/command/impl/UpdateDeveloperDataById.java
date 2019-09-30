@@ -22,7 +22,7 @@ public class UpdateDeveloperDataById implements Command{
 
         if (developer.isPresent()){
             Developer dev = developer.get();
-            dev.printSelf();
+            System.out.println(dev);
 
             System.out.println("Enter developer\'s name:");
             String name = Reader.nextString();

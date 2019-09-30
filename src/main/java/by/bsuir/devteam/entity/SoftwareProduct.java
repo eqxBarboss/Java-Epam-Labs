@@ -22,10 +22,9 @@ public class SoftwareProduct extends Entity{
     }
 
     @Override
-    public void printSelf() {
-        super.printSelf();
-
-        System.out.println("Title: " + title);
-        System.out.println("Customer: " + customer);
+    public String toString() {
+        return super.toString() + System.lineSeparator() +
+                "Title: " + title + System.lineSeparator() +
+                "Customer: " + customer;
     }
 }

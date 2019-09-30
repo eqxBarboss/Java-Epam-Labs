@@ -16,10 +16,6 @@ public class Entity implements java.io.Serializable{
         return this.id;
     }
 
-    public void printSelf(){
-        System.out.println("Id: " + id);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -35,8 +31,6 @@ public class Entity implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "Entity{" +
-                "id=" + id +
-                '}';
+        return "Id: " + id;
     }
 }
