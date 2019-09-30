@@ -1,6 +1,6 @@
 package by.bsuir.devteam.command;
 
-import exception.CommandException;
+import by.bsuir.devteam.exception.CommandException;
 
 public class CommandFactory {
 

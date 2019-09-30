@@ -2,7 +2,7 @@ package by.bsuir.devteam.parser;
 
 import by.bsuir.devteam.entity.Team;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import exception.XmlOutInException;
+import by.bsuir.devteam.exception.XmlOutInException;
 
 import java.io.IOException;
 import java.nio.file.Files;
