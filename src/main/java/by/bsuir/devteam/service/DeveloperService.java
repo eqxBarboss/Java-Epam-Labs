@@ -4,7 +4,6 @@ import by.bsuir.devteam.entity.crud.Developers;
 import by.bsuir.devteam.entity.employee.Developer;
 import by.bsuir.devteam.singleton.SingletonTeam;
 
-import java.util.List;
 import java.util.Optional;
 
 public class DeveloperService {
@@ -28,6 +27,6 @@ public class DeveloperService {
     }
 
     public String getAllDevelopers(){
-        return developers.getAll();
+        return developers.toString();
     }
 }

@@ -1,5 +1,7 @@
 package by.bsuir.devteam.entity.employee;
 
+import java.util.Objects;
+
 public class Developer extends Employee {
 
     private String favoriteGame;
@@ -16,5 +18,20 @@ public class Developer extends Employee {
     public String toString() {
         return super.toString() + System.lineSeparator() +
                 "Favorite gane: " + favoriteGame;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Developer developer = (Developer) o;
+        return Objects.equals(favoriteGame, developer.favoriteGame);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(super.hashCode(), favoriteGame);
     }
 }

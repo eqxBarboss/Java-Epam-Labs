@@ -11,11 +11,13 @@ public interface CRUD<T> {
 
     Optional<T> getByName(String name);
 
-    String getAll();
-
     void update(int id , T entity);
 
     void delete(T entity);
 
     void deleteById(int id);
+
+    int getMaxId();
+
+    void updateMaxId();
 }

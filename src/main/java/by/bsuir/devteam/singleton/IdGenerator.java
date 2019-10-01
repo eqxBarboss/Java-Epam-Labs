@@ -11,9 +11,9 @@ public class IdGenerator {
         return ++id;
     }
 
-    public void init(int id){
-        if (this.id == 0){
-            this.id = id;
+    public static void init(int i){
+        if (id == 0){
+            id = i;
         }
     }
 

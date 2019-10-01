@@ -6,7 +6,7 @@ import by.bsuir.devteam.reader.Reader;
 import by.bsuir.devteam.service.DeveloperService;
 import by.bsuir.devteam.utils.DataValidator;
 
-public class HireDeveloper implements Command {
+public class AddDeveloper implements Command {
 
     @Override
     public void execute() {

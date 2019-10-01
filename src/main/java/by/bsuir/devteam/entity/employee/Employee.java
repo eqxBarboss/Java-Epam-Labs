@@ -2,6 +2,8 @@ package by.bsuir.devteam.entity.employee;
 
 import by.bsuir.devteam.entity.Entity;
 
+import java.util.Objects;
+
 public abstract class Employee extends Entity{
 
     private String name;
@@ -38,5 +40,22 @@ public abstract class Employee extends Entity{
                 "Name: " + name + System.lineSeparator() +
                 "Surname: " + surname + System.lineSeparator() +
                 "Phone number: " + phoneNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(name, employee.name) &&
+                Objects.equals(surname, employee.surname) &&
+                Objects.equals(phoneNumber, employee.phoneNumber);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(super.hashCode(), name, surname, phoneNumber);
     }
 }

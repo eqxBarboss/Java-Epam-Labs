@@ -8,14 +8,14 @@ import by.bsuir.devteam.utils.DataValidator;
 
 import java.util.Optional;
 
-public class UpdateDeveloperDataById implements Command{
+public class UpdateDeveloperById implements Command{
 
     @Override
     public void execute() {
 
         DeveloperService developerService = new DeveloperService();
 
-        System.out.println("Enter developer's id");
+        System.out.println("Enter developer's id:");
         int id = Reader.nextInt();
 
         Optional<Developer> developer = developerService.getDeveloperById(id);
@@ -57,6 +57,9 @@ public class UpdateDeveloperDataById implements Command{
             dev.setFavoriteGame(favoriteGame);
 
             developerService.updateDeveloperDataById(id, dev);
+        }
+        else {
+            System.out.println("No developer with such id found.");
         }
     }
 }

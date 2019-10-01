@@ -21,11 +21,9 @@ public class SingletonTeam {
 
             Developers developers = new Developers();
             BusinessAnalysts businessAnalysts = new BusinessAnalysts();
-            TeamLead teamLead = new TeamLead();
             Testers testers = new Testers();
-            SoftwareProduct softwareProduct = new SoftwareProduct();
 
-            team = new Team(testers, developers, businessAnalysts, teamLead, softwareProduct);
+            team = new Team(testers, developers, businessAnalysts, null, null);
         }
         return team;
     }

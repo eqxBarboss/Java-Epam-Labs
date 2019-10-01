@@ -1,25 +1,29 @@
 package by.bsuir.devteam.entity.crud;
 
+import by.bsuir.devteam.entity.Entity;
 import by.bsuir.devteam.entity.employee.BusinessAnalyst;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class BusinessAnalysts implements CRUD<BusinessAnalyst>, java.io.Serializable{
 
     private List<BusinessAnalyst> businessAnalysts;
+    private int maxId;
+
+    public void setBusinessAnalysts(List<BusinessAnalyst> businessAnalysts) {
+        this.businessAnalysts = businessAnalysts;
+    }
+
+    public List<BusinessAnalyst> getBusinessAnalysts() {
+        return businessAnalysts;
+    }
 
     public BusinessAnalysts() {
         this.businessAnalysts = new ArrayList<BusinessAnalyst>();
-    }
-
-    @Override
-    public String getAll() {
-        return businessAnalysts.stream()
-                .map(BusinessAnalyst::toString)
-                .collect(Collectors.joining(System.lineSeparator()));
     }
 
     @Override
@@ -56,5 +60,39 @@ public class BusinessAnalysts implements CRUD<BusinessAnalyst>, java.io.Serializ
     @Override
     public void deleteById(int id) {
         this.businessAnalysts.removeIf(d -> d.getId() == id);
+    }
+
+    @Override
+    public int getMaxId(){
+        return this.maxId;
+    }
+
+    @Override
+    public void updateMaxId() {
+        this.maxId = businessAnalysts
+                .stream()
+                .mapToInt(Entity::getId)
+                .max().orElse(0);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BusinessAnalysts that = (BusinessAnalysts) o;
+        return Objects.equals(businessAnalysts, that.businessAnalysts);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(businessAnalysts);
+    }
+
+    @Override
+    public String toString() {
+        return businessAnalysts.stream()
+                .map(BusinessAnalyst::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 }

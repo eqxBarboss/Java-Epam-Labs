@@ -4,7 +4,7 @@ import by.bsuir.devteam.command.Command;
 import by.bsuir.devteam.reader.Reader;
 import by.bsuir.devteam.service.DeveloperService;
 
-public class FireDeveloperById implements Command {
+public class DeleteDeveloperById implements Command {
 
     @Override
     public void execute() {

@@ -26,6 +26,7 @@ public class Entity implements java.io.Serializable{
 
     @Override
     public int hashCode() {
+
         return Objects.hash(id);
     }
 

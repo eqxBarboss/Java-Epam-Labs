@@ -10,7 +10,6 @@ public class DisplayDevelopers implements Command {
     public void execute() {
 
         DeveloperService developerService = new DeveloperService();
-
         System.out.println(developerService.getAllDevelopers());
     }
 }

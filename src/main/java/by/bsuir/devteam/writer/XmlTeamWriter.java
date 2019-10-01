@@ -14,7 +14,7 @@ public class XmlTeamWriter {
             XmlMapper xmlMapper = new XmlMapper();
             xmlMapper.writeValue(new File(fileName), team);
         } catch (IOException e) {
-            throw new XmlOutInException("can't read file Xml name = [" + fileName + "]", e);
+            throw new XmlOutInException("can't write to file = [" + fileName + "]", e);
         }
     }
 }
