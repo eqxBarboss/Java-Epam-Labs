@@ -4,32 +4,59 @@ import by.bsuir.devteam.entity.Entity;
 
 import java.util.Objects;
 
+/***
+ * Basic parent class for all employees in the team
+ */
 public abstract class Employee extends Entity implements Comparable<Employee>{
 
     private String name;
     private String surname;
     private String phoneNumber;
 
+    /***
+     * Name getter
+     * @return Returns the name of an employee
+     */
     public String getName(){
         return this.name;
     }
 
+    /***
+     * Name setter
+     * @param name New name to be set
+     */
     public void setName(String name){
         this.name = name;
     }
 
+    /***
+     * Surname getter
+     * @return Returns the surname of an employee
+     */
     public String getSurname(){
         return this.surname;
     }
 
+    /***
+     * Surname setter
+     * @param surname New surname to be set
+     */
     public void setSurname(String surname){
         this.surname = surname;
     }
 
+    /***
+     * Phone number getter
+     * @return Returns the phone number of an employee
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /***
+     * Phone number setter
+     * @param phoneNumber New phone number to be set
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -59,6 +86,11 @@ public abstract class Employee extends Entity implements Comparable<Employee>{
         return Objects.hash(super.hashCode(), name, surname, phoneNumber);
     }
 
+    /***
+     * Comparable<Employee> interface method, implements naturalOrder comparison by full name
+     * @param o An employee to be compared with
+     * @return -1, 0, 1 - comparison result
+     */
     @Override
     public int compareTo(Employee o) {
 

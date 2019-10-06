@@ -10,6 +10,12 @@ import java.nio.file.Paths;
 
 public class XmlTeamParser {
 
+    /***
+     * Parse xml file with Team object serialized into it
+     * @param fileName name of the file to be proceeded
+     * @return Returns Team object
+     * @throws XmlOutInException is invoked on any error met while proceeding
+     */
     public Team parse(String fileName) throws XmlOutInException {
         XmlMapper xmlMapper = new XmlMapper();
         try {

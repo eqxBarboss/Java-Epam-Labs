@@ -8,6 +8,9 @@ import by.bsuir.devteam.utils.DataValidator;
 
 public class AddTester implements Command {
 
+    /***
+     * Gets all required data to create a new Tester object and adds this object to a team
+     */
     @Override
     public void execute() {
 
