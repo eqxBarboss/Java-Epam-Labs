@@ -2,11 +2,9 @@ package by.bsuir.devteam.entity.crud;
 
 import by.bsuir.devteam.entity.Entity;
 import by.bsuir.devteam.entity.employee.Developer;
+import by.bsuir.devteam.entity.employee.EmployeeIdComparator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Developers implements CRUD<Developer>, java.io.Serializable{
@@ -73,6 +71,18 @@ public class Developers implements CRUD<Developer>, java.io.Serializable{
                 .stream()
                 .mapToInt(Entity::getId)
                 .max().orElse(0);
+    }
+
+    public String toStringSortedById(){
+
+        developers.sort(new EmployeeIdComparator());
+        return this.toString();
+    }
+
+    public String toStringSortedByFullName(){
+
+        Collections.sort(developers);
+        return this.toString();
     }
 
     @Override

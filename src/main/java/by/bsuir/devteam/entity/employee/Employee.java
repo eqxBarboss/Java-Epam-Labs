@@ -4,7 +4,7 @@ import by.bsuir.devteam.entity.Entity;
 
 import java.util.Objects;
 
-public abstract class Employee extends Entity{
+public abstract class Employee extends Entity implements Comparable<Employee>{
 
     private String name;
     private String surname;
@@ -57,5 +57,12 @@ public abstract class Employee extends Entity{
     public int hashCode() {
 
         return Objects.hash(super.hashCode(), name, surname, phoneNumber);
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+
+        int result = this.getSurname().compareTo(o.getSurname());
+        return result == 0 ? this.getName().compareTo(o.getName()) : result;
     }
 }

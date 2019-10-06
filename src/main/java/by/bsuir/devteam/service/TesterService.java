@@ -29,4 +29,8 @@ public class TesterService {
     public String getAllTesters(){
         return testers.toString();
     }
+
+    public String getAllTestersSortedByFullName() { return testers.toStringSortedByFullName(); }
+
+    public String getAllTestersSortedById() { return testers.toStringSortedById(); }
 }

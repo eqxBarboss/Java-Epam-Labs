@@ -1,12 +1,10 @@
 package by.bsuir.devteam.entity.crud;
 
 import by.bsuir.devteam.entity.Entity;
+import by.bsuir.devteam.entity.employee.EmployeeIdComparator;
 import by.bsuir.devteam.entity.employee.Tester;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Testers implements CRUD<Tester>, java.io.Serializable{
@@ -87,6 +85,18 @@ public class Testers implements CRUD<Tester>, java.io.Serializable{
     public int hashCode() {
 
         return Objects.hash(testers);
+    }
+
+    public String toStringSortedById(){
+
+        testers.sort(new EmployeeIdComparator());
+        return this.toString();
+    }
+
+    public String toStringSortedByFullName(){
+
+        Collections.sort(testers);
+        return this.toString();
     }
 
     @Override

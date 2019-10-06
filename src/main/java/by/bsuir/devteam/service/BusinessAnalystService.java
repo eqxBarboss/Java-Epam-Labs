@@ -29,4 +29,8 @@ public class BusinessAnalystService {
     public String getAllBusinessAnalysts(){
         return businessAnalysts.toString();
     }
+
+    public String getAllBusinessAnalystsSortedByFullName() { return businessAnalysts.toStringSortedByFullName(); }
+
+    public String getAllBusinessAnalystsSortedById() { return businessAnalysts.toStringSortedById(); }
 }

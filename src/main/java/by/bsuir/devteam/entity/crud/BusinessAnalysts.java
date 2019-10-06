@@ -2,11 +2,9 @@ package by.bsuir.devteam.entity.crud;
 
 import by.bsuir.devteam.entity.Entity;
 import by.bsuir.devteam.entity.employee.BusinessAnalyst;
+import by.bsuir.devteam.entity.employee.EmployeeIdComparator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class BusinessAnalysts implements CRUD<BusinessAnalyst>, java.io.Serializable{
@@ -87,6 +85,18 @@ public class BusinessAnalysts implements CRUD<BusinessAnalyst>, java.io.Serializ
     public int hashCode() {
 
         return Objects.hash(businessAnalysts);
+    }
+
+    public String toStringSortedById(){
+
+        businessAnalysts.sort(new EmployeeIdComparator());
+        return this.toString();
+    }
+
+    public String toStringSortedByFullName(){
+
+        Collections.sort(businessAnalysts);
+        return this.toString();
     }
 
     @Override

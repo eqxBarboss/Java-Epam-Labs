@@ -14,14 +14,13 @@ public class Init {
     public static void Init(){
 
         XmlTeamParser xmlTeamParser = new XmlTeamParser();
-        Team team;
 
         try {
-            team = xmlTeamParser.parse("coolTeam.xml");
+            Team team = xmlTeamParser.parse("coolTeam.xml");
 
-            if (team.getDevelopers() == null) team.setDevelopers(new Developers());
-            if (team.getTesters() == null) team.setTesters(new Testers());
-            if (team.getBusinessAnalysts() == null) team.setBusinessAnalysts(new BusinessAnalysts());
+            if (team.getDevelopers().getDevelopers() == null) team.setDevelopers(new Developers());
+            if (team.getTesters().getTesters() == null) team.setTesters(new Testers());
+            if (team.getBusinessAnalysts().getBusinessAnalysts() == null) team.setBusinessAnalysts(new BusinessAnalysts());
 
             SingletonTeam.init(team);
             team.updateMaxId();

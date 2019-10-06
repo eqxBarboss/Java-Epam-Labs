@@ -17,7 +17,7 @@ public class Developer extends Employee {
     @Override
     public String toString() {
         return super.toString() + System.lineSeparator() +
-                "Favorite gane: " + favoriteGame;
+                "Favorite game: " + favoriteGame;
     }
 
     @Override

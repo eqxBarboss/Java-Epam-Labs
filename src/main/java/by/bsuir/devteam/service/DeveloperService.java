@@ -29,4 +29,8 @@ public class DeveloperService {
     public String getAllDevelopers(){
         return developers.toString();
     }
+
+    public String getAllDevelopersSortedByFullName() { return developers.toStringSortedByFullName(); }
+
+    public String getAllDevelopersSortedById() { return developers.toStringSortedById(); }
 }
