@@ -1,36 +1,46 @@
 package by.bsuir.devteam.service;
 
-import by.bsuir.devteam.entity.crud.BusinessAnalysts;
+import by.bsuir.devteam.dao.BusinessAnalystDAO;
+import by.bsuir.devteam.dao.factory.DAOFactory;
 import by.bsuir.devteam.entity.employee.BusinessAnalyst;
-import by.bsuir.devteam.singleton.SingletonTeam;
+import by.bsuir.devteam.entity.employee.EmployeeIdComparator;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 public class BusinessAnalystService {
-
-    private BusinessAnalysts businessAnalysts = SingletonTeam.getInstance().getBusinessAnalysts();
+    private BusinessAnalystDAO businessAnalystDAO = DAOFactory.getInstance().getBusinessAnalystDAO();
 
     public void hireBusinessAnalyst(BusinessAnalyst businessAnalyst){
-        businessAnalysts.add(businessAnalyst);
+        businessAnalystDAO.add(businessAnalyst);
     }
 
     public void fireBusinessAnalystById(int id){
-        businessAnalysts.deleteById(id);
+        businessAnalystDAO.deleteById(id);
     }
 
     public Optional<BusinessAnalyst> getBusinessAnalystById(int id){
-        return businessAnalysts.getById(id);
+        return businessAnalystDAO.get(id);
     }
 
     public void updateBusinessAnalystDataById(int id, BusinessAnalyst businessAnalyst){
-        businessAnalysts.update(id, businessAnalyst);
+        businessAnalystDAO.update(id, businessAnalyst);
     }
 
     public String getAllBusinessAnalysts(){
+        return businessAnalystDAO.getAll().toString();
+    }
+
+    public String getAllBusinessAnalystsSortedByFullName() {
+        List<BusinessAnalyst> businessAnalysts = businessAnalystDAO.getAll();
+        Collections.sort(businessAnalysts);
         return businessAnalysts.toString();
     }
 
-    public String getAllBusinessAnalystsSortedByFullName() { return businessAnalysts.toStringSortedByFullName(); }
-
-    public String getAllBusinessAnalystsSortedById() { return businessAnalysts.toStringSortedById(); }
+    public String getAllBusinessAnalystsSortedById() {
+        List<BusinessAnalyst> businessAnalysts = businessAnalystDAO.getAll();
+        businessAnalysts.sort(new EmployeeIdComparator());
+        return businessAnalysts.toString();
+    }
 }

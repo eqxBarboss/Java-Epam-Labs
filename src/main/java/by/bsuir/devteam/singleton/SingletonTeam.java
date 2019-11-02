@@ -1,12 +1,12 @@
 package by.bsuir.devteam.singleton;
 
-import by.bsuir.devteam.entity.SoftwareProduct;
 import by.bsuir.devteam.entity.Team;
-import by.bsuir.devteam.entity.crud.BusinessAnalysts;
-import by.bsuir.devteam.entity.crud.Developers;
-import by.bsuir.devteam.entity.crud.Testers;
-import by.bsuir.devteam.entity.employee.TeamLead;
+import by.bsuir.devteam.entity.employee.BusinessAnalyst;
+import by.bsuir.devteam.entity.employee.Developer;
 import by.bsuir.devteam.entity.employee.Tester;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SingletonTeam {
 
@@ -19,9 +19,9 @@ public class SingletonTeam {
     public static Team getInstance() {
         if (team == null){
 
-            Developers developers = new Developers();
-            BusinessAnalysts businessAnalysts = new BusinessAnalysts();
-            Testers testers = new Testers();
+            List<Developer> developers = new ArrayList<Developer>();
+            List<BusinessAnalyst> businessAnalysts = new ArrayList<BusinessAnalyst>();
+            List<Tester> testers = new ArrayList<Tester>();
 
             team = new Team(testers, developers, businessAnalysts, null, null);
         }

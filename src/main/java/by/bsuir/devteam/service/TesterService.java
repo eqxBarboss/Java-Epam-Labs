@@ -1,36 +1,47 @@
 package by.bsuir.devteam.service;
 
-import by.bsuir.devteam.entity.crud.Testers;
+import by.bsuir.devteam.dao.TesterDAO;
+import by.bsuir.devteam.dao.factory.DAOFactory;
+import by.bsuir.devteam.entity.employee.EmployeeIdComparator;
 import by.bsuir.devteam.entity.employee.Tester;
-import by.bsuir.devteam.singleton.SingletonTeam;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 public class TesterService {
 
-    private Testers testers = SingletonTeam.getInstance().getTesters();
+    private TesterDAO testerDAO = DAOFactory.getInstance().getTesterDAO();
 
     public void hireTester(Tester tester){
-        testers.add(tester);
+        testerDAO.add(tester);
     }
 
     public void fireTesterById(int id){
-        testers.deleteById(id);
+        testerDAO.deleteById(id);
     }
 
     public Optional<Tester> getTesterById(int id){
-        return testers.getById(id);
+        return testerDAO.get(id);
     }
 
     public void updateTesterDataById(int id, Tester tester){
-        testers.update(id, tester);
+        testerDAO.update(id, tester);
     }
 
     public String getAllTesters(){
+        return testerDAO.getAll().toString();
+    }
+
+    public String getAllTestersSortedByFullName() {
+        List<Tester> testers = testerDAO.getAll();
+        Collections.sort(testers);
         return testers.toString();
     }
 
-    public String getAllTestersSortedByFullName() { return testers.toStringSortedByFullName(); }
-
-    public String getAllTestersSortedById() { return testers.toStringSortedById(); }
+    public String getAllTestersSortedById() {
+        List<Tester> testers = testerDAO.getAll();
+        testers.sort(new EmployeeIdComparator());
+        return testers.toString();
+    }
 }

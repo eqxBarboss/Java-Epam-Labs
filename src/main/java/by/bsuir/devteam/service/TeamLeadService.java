@@ -1,37 +1,38 @@
 package by.bsuir.devteam.service;
 
+import by.bsuir.devteam.dao.TeamLeadDAO;
+import by.bsuir.devteam.dao.factory.DAOFactory;
 import by.bsuir.devteam.entity.Team;
 import by.bsuir.devteam.entity.employee.TeamLead;
 import by.bsuir.devteam.singleton.SingletonTeam;
 
 public class TeamLeadService {
-
-    private Team team = SingletonTeam.getInstance();
+    private TeamLeadDAO teamLeadDAO = DAOFactory.getInstance().getTeamLeadDAO();
 
     public boolean hireTeamLead(TeamLead teamLead) {
-        if (team.getTeamLead() == null) {
-            team.setTeamLead(teamLead);
+        if (teamLeadDAO.get() == null) {
+            teamLeadDAO.set(teamLead);
             return true;
         }
         return false;
     }
 
     public boolean fireTeamLead(){
-        if (team.getTeamLead() == null){
+        if (teamLeadDAO.get() == null){
             return false;
         }
-        team.setTeamLead(null);
+        teamLeadDAO.delete();
         return true;
     }
 
     public TeamLead getTeamLead(){
-        return team.getTeamLead();
+        return teamLeadDAO.get();
     }
 
     public void updateTeamLead(TeamLead teamLead){
-        TeamLead tl = team.getTeamLead();
+        TeamLead tl = teamLeadDAO.get();
 
         if (tl != null && tl.getId() == teamLead.getId())
-            team.setTeamLead(teamLead);
+            teamLeadDAO.set(teamLead);
     }
 }

@@ -1,27 +1,27 @@
 package by.bsuir.devteam.entity;
 
-import by.bsuir.devteam.entity.crud.BusinessAnalysts;
-import by.bsuir.devteam.entity.crud.Developers;
-import by.bsuir.devteam.entity.crud.Testers;
+import by.bsuir.devteam.entity.employee.BusinessAnalyst;
+import by.bsuir.devteam.entity.employee.Developer;
 import by.bsuir.devteam.entity.employee.TeamLead;
+import by.bsuir.devteam.entity.employee.Tester;
 
+import java.util.List;
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 public class Team implements java.io.Serializable{
 
     private TeamLead teamLead;
     private SoftwareProduct softwareProduct;
-    private Testers testers;
-    private Developers developers;
-    private BusinessAnalysts businessAnalysts;
+    private List<Tester> testers;
+    private List<Developer> developers;
+    private List<BusinessAnalyst> businessAnalysts;
     private int maxId;
 
     public Team(){
 
     }
 
-    public Team(Testers testers, Developers developers, BusinessAnalysts businessAnalysts,
+    public Team(List<Tester> testers, List<Developer> developers, List<BusinessAnalyst> businessAnalysts,
                 TeamLead teamLead, SoftwareProduct softwareProduct) {
         this.testers = testers;
         this.developers = developers;
@@ -46,27 +46,27 @@ public class Team implements java.io.Serializable{
         this.softwareProduct = softwareProduct;
     }
 
-    public Testers getTesters() {
+    public List<Tester> getTesters() {
         return testers;
     }
 
-    public void setTesters(Testers testers) {
+    public void setTesters(List<Tester> testers) {
         this.testers = testers;
     }
 
-    public Developers getDevelopers() {
+    public List<Developer> getDevelopers() {
         return developers;
     }
 
-    public void setDevelopers(Developers developers) {
+    public void setDevelopers(List<Developer> developers) {
         this.developers = developers;
     }
 
-    public BusinessAnalysts getBusinessAnalysts() {
+    public List<BusinessAnalyst> getBusinessAnalysts() {
         return businessAnalysts;
     }
 
-    public void setBusinessAnalysts(BusinessAnalysts businessAnalysts) {
+    public void setBusinessAnalysts(List<BusinessAnalyst> businessAnalysts) {
         this.businessAnalysts = businessAnalysts;
     }
 
@@ -77,18 +77,25 @@ public class Team implements java.io.Serializable{
     public void updateMaxId(){
         int max = 0;
 
-        developers.updateMaxId();
-        testers.updateMaxId();
-        businessAnalysts.updateMaxId();
+        for (int i = 0; i < developers.size(); i++){
+            if (developers.get(i).getId() > max)
+                max = developers.get(i).getId();
+        }
+        for (int i = 0; i < businessAnalysts.size(); i++){
+            if (businessAnalysts.get(i).getId() > max)
+                max = businessAnalysts.get(i).getId();
+        }
+        for (int i = 0; i < testers.size(); i++){
+            if (testers.get(i).getId() > max)
+                max = testers.get(i).getId();
+        }
 
         if (teamLead != null)
             max = teamLead.getId();
         if (softwareProduct != null && softwareProduct.getId() > max)
             max = softwareProduct.getId();
 
-        this.maxId = IntStream.of(developers.getMaxId(), testers.getMaxId(), businessAnalysts.getMaxId(), max)
-                .max()
-                .getAsInt();
+        this.maxId = max;
     }
 
     @Override
