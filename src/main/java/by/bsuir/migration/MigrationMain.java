@@ -17,14 +17,19 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.SAXException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class MigrationMain {
+
+    private static final Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
 
         try {
             XSDValidator.validate(new File("src/main/java/team.xml"), new File("src/main/java/teamSchema.xsd"));
         } catch (ValidationException e) {
-            // log exception
+            logger.error(e.getMessage());
             return;
         }
 
@@ -35,7 +40,7 @@ public class MigrationMain {
             saxParser.parse("src/main/java/team.xml", handler);
         }
         catch (ParserConfigurationException | SAXException | IOException e){
-            // log exception
+            logger.error(e.getMessage());
             return;
         }
 
@@ -51,13 +56,12 @@ public class MigrationMain {
                 migrationService.migrateBusinessAnalysts(connection, handler.getBusinessAnalystList());
             }
             catch (SQLException e){
-                // log exception
-                System.out.println(e.getMessage());
+                logger.error(e.getMessage());
             }
         }
         catch (DataBaseException e)
         {
-            // log exception
+            logger.error(e.getMessage());
         }
     }
 }
