@@ -24,6 +24,7 @@ public class MigrationMain {
         try {
             XSDValidator.validate(new File("src/main/java/team.xml"), new File("src/main/java/teamSchema.xsd"));
         } catch (ValidationException e) {
+            // log exception
             return;
         }
 
@@ -34,6 +35,7 @@ public class MigrationMain {
             saxParser.parse("src/main/java/team.xml", handler);
         }
         catch (ParserConfigurationException | SAXException | IOException e){
+            // log exception
             return;
         }
 
@@ -49,12 +51,13 @@ public class MigrationMain {
                 migrationService.migrateBusinessAnalysts(connection, handler.getBusinessAnalystList());
             }
             catch (SQLException e){
+                // log exception
                 System.out.println(e.getMessage());
             }
         }
         catch (DataBaseException e)
         {
-
+            // log exception
         }
     }
 }
